@@ -1,5 +1,16 @@
 <h1>Students</h1>
 
-<input ng-model="campoDeTexto">
+<input ng-model="nombre" placeholder="Nombre">
 
-{{campoDeTexto}}
+{{nombre}}
+
+<input ng-model="apellido" placeholder="Apellido">
+
+{{apellido}}
+
+
+<input ng-model="email" placeholder="Email">
+
+{{email}}
+
+<button ng-click="guardar(nombre, apellido, email)">Guardar</button>
