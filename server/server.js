@@ -8,27 +8,6 @@ app.use(express.static(__dirname + '../../app'));
 
 
 
-var User = sequelize.define('User', {
-  id: Sequelize.INTEGER,
-  first_name: Sequelize.STRING,
-  last_name: Sequelize.STRING,
-  email: Sequelize.STRING,
-  createdAt:{
-  	type: Sequelize.DATE,
-  	field:'created'
-  },
-  updatedAt:{
-  	type: Sequelize.DATE,
-  	field:'modified'
-  }
-});
-
-
-return sequelize.sync().then(function(){
-	return;
-})
-
-
 
 
 app.get('/students', function (req, res) {
@@ -38,14 +17,6 @@ app.get('/students', function (req, res) {
 app.get('/users/signup', function(req, res){
    res.send('Cualquier cosa');
 
-     return User.create({
-       first_name: 'janedoe',
-       last_name: 'Vargas'
-     });
-   }).then(function(jane) {
-     console.log(jane.get({
-       plain: true
-     }))
 
 });
 
