@@ -1,4 +1,4 @@
-var demoApp =  angular.module('demoApp',['ui.router', 'demoApp.home','demoApp.students'])
+var demoApp =  angular.module('demoApp',['ui.router', 'demoApp.home','demoApp.students','demoApp.images'])
 
 
 .config(function($stateProvider, $urlRouterProvider){
@@ -15,6 +15,11 @@ var demoApp =  angular.module('demoApp',['ui.router', 'demoApp.home','demoApp.st
 	      url: "/students",
 	      templateUrl: "views/students.html",
 	      controller: 'StudentsController'
+	    })
+	    .state('images', {
+	      url: "/images",
+	      templateUrl: "views/images.html",
+	      controller: 'ImagesController'
 	    })
 
 
