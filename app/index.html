@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="demoApp">
+<head>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<title>App demo</title>
+</head>
+<body>
+
+	
+	<a ui-sref="home" class="btn btn-primary">Home</a>
+	<a ui-sref="students" class="btn btn-warning">Students</a>
+	
+	<div ui-view></div>
+	<script src="js/app.js"></script>
+	<script src="js/home.js"></script>
+	<script src="js/students.js"></script>
+</body>
+</html>
