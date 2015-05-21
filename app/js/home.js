@@ -2,14 +2,10 @@ angular.module('demoApp.home',[])
 
 .controller('HomeController', ["$scope","Home", function($scope, Home){
     angular.extend($scope, Home);
-
 	$scope.mensaje = "Hola mundo!";
-
 	$scope.llamar = function(){
 		return Home.jalarEstudiantes();
 	};
-
-
 	$scope.lista = [ {nombre:"Riony", apellido:"Arroyo"}, {nombre:'Rene',apellido: "Gumiel"}, {nombre:'Evert', apellido: 'Alvarado'}];
 	
 }]).factory('Home', function($http){
@@ -25,8 +21,6 @@ angular.module('demoApp.home',[])
 		});
 
 	} 
-
-
 	return {
 		jalarEstudiantes: jalarEstudiantes
 	}

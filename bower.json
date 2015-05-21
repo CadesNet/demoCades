@@ -1,0 +1,24 @@
+{
+  "name": "demoCades",
+  "version": "0.0.0",
+  "homepage": "https://github.com/CadesNet/demoCades",
+  "authors": [
+    "Rene Polo <renejpolo@me.com>"
+  ],
+  "keywords": [
+    "demo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.13",
+    "angular": "~1.3.15"
+  }
+}
