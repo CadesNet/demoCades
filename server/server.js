@@ -1,26 +1,9 @@
 var express = require('express');
 var app = express();
-var Sequelize = require('sequelize');
+
 var bodyParser = require('body-parser');
-var sequelize = new Sequelize('demoCades', 'root', '');
 
-
-
-
-var User = sequelize.define('User', {
-  id: Sequelize.INTEGER,
-  first_name: Sequelize.STRING,
-  last_name: Sequelize.STRING,
-  email: Sequelize.STRING,
-  createdAt:{
-    type: Sequelize.DATE,
-    field:'created'
-  },
-  updatedAt:{
-    type: Sequelize.DATE,
-    field:'modified'
-  }
-});
+var User = require('./users.js');
 
 
 app.use(express.static(__dirname + '../../app'));
@@ -45,7 +28,7 @@ app.post('/user/new', function(req, res){
 
     console.log('llego a user new con: ', req.body);
 
-   User.sync({force: true}).then(function () {
+   User.sync({force: false}).then(function () {
      // Table created
      return User.create({
        first_name: theName,
@@ -69,15 +52,6 @@ app.get('/api/students', function (req, res) {
   res.json({estudiantes: {nombre: 'rene', apellido:'Polo'}});
 });
 
-app.get('/api/users', function (req, res) {
-   var usuarios = [];
-   User.findAll()
-  .then(function(respuesta){
-  	usuarios = respuesta;
-  })
-
-  res.json({data: respuesta});
-});
 
 
 var server = app.listen(3000, function () {
