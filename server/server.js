@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 var Sequelize = require('sequelize');
+var bodyParser = require('body-parser');
 var sequelize = new Sequelize('demoCades', 'root', '');
+
+
 
 
 var User = sequelize.define('User', {
@@ -20,12 +23,10 @@ var User = sequelize.define('User', {
 });
 
 
-// return sequelize.sync().then(function(){
-//   return ;
-// })
-
-
 app.use(express.static(__dirname + '../../app'));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 app.get('/students', function (req, res) {
   res.send('Aqui deberian aparecer los estudiantes');
@@ -37,23 +38,31 @@ app.get('/users/signup', function(req, res){
 
 app.post('/user/new', function(req, res){
     res.send('POST request to homepage');
+    var theName  = req.body.nombre;
+    var theLast = req.body.apellido;
+    var theMail = req.body.email;
 
-    // console.log('llego a user new');
-    // var user = req.params.user;
 
-    // User.findOrCreate(user)
-    // .spread(function(user, created) {
-    // console.log(user.get({
-    //   plain: true
-    // })));
-    // console.log(created)
+    console.log('llego a user new con: ', req.body);
+
+   User.sync({force: true}).then(function () {
+     // Table created
+     return User.create({
+       first_name: theName,
+       last_name: theLast,
+       email: theMail
+     });
+   });
+  
 
 
 });
 
 app.get('/api/users', function(req, res){
     console.log('api de users');
-    res.json({data: 'api de users'});
+    User.findAll().then(function(users) {
+      res.json({data: users});
+    })
 })
 
 app.get('/api/students', function (req, res) {
